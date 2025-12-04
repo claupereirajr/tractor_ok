@@ -10,17 +10,18 @@ sealed class User with _$User {
     required String name,
     required String email,
     required String password,
-  }) = _User;
+  }) = Basic;
 
-  const factory User.notLoggedIn() = _NotLoggedIn;
+  const factory User.notLoggedIn() = NotLoggedIn;
   const factory User.loggedIn({
     required int id,
     required String name,
     required String email,
     required String password,
+    required bool isActive,
     required String token,
     required String refreshToken,
-  }) = _LoggedIn;
+  }) = LoggedIn;
 
-  factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }
